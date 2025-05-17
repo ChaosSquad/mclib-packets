@@ -27,7 +27,7 @@ repositories {
 
 dependencies {
     // [...]
-    compileOnly("net.chaossquad:mclib:main-92a169fd549aa8252e7010ada5beb12c781761d7") // Required
-    compileOnly("net.chaossquad:mclib-packets:main-900330d162f9f1b5d72158275e3880b85c109364")
+    implementation("net.chaossquad:mclib:main-92a169fd549aa8252e7010ada5beb12c781761d7") // Required
+    implementation("net.chaossquad:mclib-packets:main-900330d162f9f1b5d72158275e3880b85c109364")
 }
 ```
