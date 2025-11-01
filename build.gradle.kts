@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("io.papermc.paperweight.userdev") version "2.0.0-beta.8"
+    id("io.papermc.paperweight.userdev") version "2.0.0-beta.17"
     id("maven-publish")
 }
 
@@ -27,8 +27,8 @@ repositories {
 paperweight.reobfArtifactConfiguration = io.papermc.paperweight.userdev.ReobfArtifactConfiguration.MOJANG_PRODUCTION
 
 dependencies {
-    paperweight.paperDevBundle("1.21.4-R0.1-SNAPSHOT")
-    compileOnly("net.chaossquad:mclib:main-92a169fd549aa8252e7010ada5beb12c781761d7")
+    paperweight.paperDevBundle("1.21.8-R0.1-SNAPSHOT")
+    compileOnly("net.chaossquad:mclib:main-f54795e7aa44aff7e2da665360ccafb9405d90ee")
 }
 
 java {

@@ -1,5 +1,6 @@
 package net.chaossquad.mclib.packets.packetentity;
 
+import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.protocol.game.ClientboundRemoveEntitiesPacket;
 import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;
@@ -13,6 +14,7 @@ import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import java.util.*;
+import java.util.function.BiConsumer;
 
 /**
  * Represents a packet entity.
@@ -178,7 +180,11 @@ public class PacketEntity<T extends Entity> implements EntityInLevelCallback {
 
         // Send entity data if full is set
         if (full) {
-            ServerEntity serverEntity = new ServerEntity(this.entity.level().getMinecraftWorld(), this.entity, 0, false, packet -> {}, Set.of());
+            ServerEntity serverEntity = new ServerEntity(this.entity.level().getMinecraftWorld(), this.entity, 0, false, packet -> {
+            }, new BiConsumer<Packet<?>, List<UUID>>() {
+                @Override
+                public void accept(Packet<?> packet, List<UUID> uuids) {}
+            }, Set.of());
             ClientboundAddEntityPacket packet = new ClientboundAddEntityPacket(this.entity, serverEntity);
             ((CraftPlayer) player).getHandle().connection.send(packet);
         }
